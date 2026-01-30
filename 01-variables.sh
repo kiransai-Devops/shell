@@ -9,7 +9,7 @@
 # read -s PASSWORD
 # echo "password is : $PASSWORD"
 
-echo "name: $name"
+echo "name is: $name"
 
 
 
