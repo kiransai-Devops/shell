@@ -5,9 +5,10 @@
 # echo "$person1: hi $person2"
 # echo "$person2: hi $person1"
 
-echo "enter your password "
-read -s PASSWORD
-echo "password is : $PASSWORD"
+# echo "enter your password "
+# read -s PASSWORD
+# echo "password is : $PASSWORD"
 
+echo "name:$name"
 
 
