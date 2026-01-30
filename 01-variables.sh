@@ -6,7 +6,7 @@
 # echo "$person2: hi $person1"
 
 echo "enter your password "
-read PASSWORD
+read -s PASSWORD
 echo "password is : $PASSWORD"
 
 
