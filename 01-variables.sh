@@ -21,6 +21,6 @@ sleep 10
 
 ending_time=$(date +%s)
 
-total_time=$(($starting_time-$ending_time))
+total_time=$(($ending_time-$starting_time))
 
 echo "executed time : $total_time"
