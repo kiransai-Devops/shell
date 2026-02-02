@@ -13,5 +13,6 @@
 
 DATE=$(date)
 
+start_time=$(date +%s)
 
 
