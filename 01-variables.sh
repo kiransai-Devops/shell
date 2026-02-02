@@ -44,5 +44,5 @@
 # SUM=$(($NUM1+$NUM2))
 # echo "sum is : $SUM"
 
-NAMES=("sai","kiran","kiransai","saikiran")
+NAMES=("sai" "kiran" "kiransai" "saikiran")
 echo "first name is : ${NAMES[0]}"
