@@ -46,3 +46,4 @@
 
 NAMES=("sai" "kiran" "kiransai" "saikiran")
 echo "first name is : ${NAMES[0]}"
+echo "all names : ${NAMES[@]}"
