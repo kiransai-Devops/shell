@@ -39,9 +39,10 @@
 # echo "Process instance id of the last command in background: $!"
 
 # datatypes--------------
-NUM1=100
-NUM2=300
+# NUM1=100
+# NUM2=300
+# SUM=$(($NUM1+$NUM2))
+# echo "sum is : $SUM"
 
-SUM=$(($NUM1+$NUM2))
-
-echo "sum is : $SUM"
+NAMES=("sai,kiran,kiransai,saikiran")
+echo "first name is : ${NAMES[0]}"
