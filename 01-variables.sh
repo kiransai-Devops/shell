@@ -31,8 +31,8 @@
 # echo "all variables passed to the script:$* "
 
 echo "Script name: $0"
-# Current directory in script: $PWD
-# Who is running the script:$USER
-# Home directory of user: $HOME
-# Process instance id of the script: $$
-# Process instance id of the last command in background: $!
+echo "Current directory in script: $PWD"
+echo "Who is running the script:$USER"
+echo "Home directory of user: $HOME"
+echo "Process instance id of the script: $$"
+echo "Process instance id of the last command in background: $!"
