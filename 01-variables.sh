@@ -9,8 +9,7 @@
 # read -s PASSWORD
 # echo "password is : $PASSWORD"
 
-echo "name is: $name"
+# echo "name is: $name"
 
-
-
+date=$(date)
 
