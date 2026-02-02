@@ -30,7 +30,7 @@ special variable
 # echo "all variables passed to the script:$@ "
 # echo "all variables passed to the script:$* "
 
-Script name: $0
+echo "Script name: $0"
 # Current directory in script: $PWD
 # Who is running the script:$USER
 # Home directory of user: $HOME
