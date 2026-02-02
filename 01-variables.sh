@@ -11,9 +11,14 @@
 
 # echo "name is: $name"
 
-DATE=$(date)
+# DATE=$(date)
 
-echo "timestamp excuted : $DATE"
+# echo "timestamp excuted : $DATE"
 
+starting_time=$(date +%s)
 
+ending_time=$(date +%s)
 
+total_time=$(($starting_time-$ending_time))
+
+echo "executed time : $total_time"
