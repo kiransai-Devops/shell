@@ -44,6 +44,15 @@
 # SUM=$(($NUM1+$NUM2))
 # echo "sum is : $SUM"
 
-NAMES=("sai" "kiran" "kiransai" "saikiran")
-echo "first name is : ${NAMES[0]}"
-echo "all names : ${NAMES[@]}"
+# NAMES=("sai" "kiran" "kiransai" "saikiran")
+# echo "first name is : ${NAMES[0]}"
+# echo "all names : ${NAMES[@]}"
+
+# conditions---------
+NUM=$1
+
+if [ $NUM -lt 20 ]; then
+   echo "given number $NUM is less then to the 20"
+else
+   echo "given number $NUM is greter then to the 20"
+fi
