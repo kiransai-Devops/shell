@@ -11,5 +11,7 @@
 
 # echo "name is: $name"
 
-date=$(date)
+DATE=$(date)
+
+
 
