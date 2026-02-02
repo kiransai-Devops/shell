@@ -35,5 +35,5 @@ echo "Current directory in script: $PWD"
 echo "Who is running the script:$USER"
 echo "Home directory of user: $HOME"
 echo "Process instance id of the script: $$"
-sleep 20
+sleep 20 &
 echo "Process instance id of the last command in background: $!"
