@@ -13,6 +13,7 @@
 
 DATE=$(date)
 
-start_time=$(date +%s)
+echo "timestamp excuted : $DATE"
+
 
 
