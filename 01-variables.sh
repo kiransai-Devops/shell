@@ -135,7 +135,6 @@ VALIDATE () { # functions revive inputs through args just like shell script args
        Exit 1
     else 
        echo -e "installing $2 is SUCCESS $Y skippping $N"
-       Exit 0
    fi
 }
 
