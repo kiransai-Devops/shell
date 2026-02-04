@@ -56,3 +56,148 @@ if [ $NUM -lt 20 ]; then
 else
    echo "given number $NUM is greter then to the 20"
 fi
+
+
+if [ $NUM -lt 20 ]; then
+   echo "given number $NUM is less then to the 20"
+elif 
+   echo "given number $NUM is equal to the 20"
+else
+   echo "given number $NUM is greter then to the 20"
+fi
+
+
+echo "enter number:"
+read NUMBER
+
+if [ $(($NUMBER % 2)) -eq 0 ]; then
+   echo "given number $NUMBER is EVEN"
+else
+   echo "given number $NUMBER is ODD"
+fi
+
+
+USERID=$(id -u)
+
+if [ $USERID -eq 1 ]; then
+   echo "ERROR: please run this script with root privelege"
+   Exit 1
+fi
+
+dnf install mysql -y
+
+if [ $? -ne 0 ]; then
+   echo "ERROR: installing mysql is failure"
+   Exit 1
+else 
+   echo "installing mysql is SUCCESS"
+   Exit 0
+fi
+
+# functions----------
+
+USERID=$(id -u)
+
+if [ $USERID -eq 1 ]; then
+   echo "ERROR: please run this script with root privelege"
+   Exit 1
+fi
+
+VALIDATE () { # functions revive inputs through args just like shell script args
+    if [ $1 -ne 0 ]; then
+       echo "ERROR: installing $2 is failure"
+       Exit 1
+    else 
+       echo "installing $2 is SUCCESS"
+       Exit 0
+   fi
+}
+
+dnf install mysql -y
+VALIDATE $? "mysql"
+
+dnf install nginx -y
+VALIDATE $? "nginx"
+
+# colours--------
+
+USERID=$(id -u)
+R="\e[31m"
+Y="\e[33m"
+N="\e[0m"
+
+if [ $USERID -eq 1 ]; then
+   echo " $R ERROR $N : please run this script with root privelege"
+   Exit 1
+fi
+
+VALIDATE () { # functions revive inputs through args just like shell script args
+    if [ $1 -ne 0 ]; then
+       echo -e "installing $2 is  $R failure $N"
+       Exit 1
+    else 
+       echo -e "installing $2 is SUCCESS $Y skippping $N"
+       Exit 0
+   fi
+}
+
+dnf list installed mysql
+if [ $? -ne 0 ]; then
+   dnf install mysql -y
+   VALIDATE $? "mysql"
+else
+   echo -e "mysql already exist $Y skipping $N"
+fi
+
+dnf list installed nginx
+if [ $? -ne 0 ]; then
+   dnf install nginx -y
+   VALIDATE $? "nginx"
+else
+   echo -e "nginx already exist $Y skipping $N"
+fi
+
+# logs and redirecting------------
+
+USERID=$(id -u)
+R="\e[31m"
+Y="\e[33m"
+N="\e[0m"
+
+LOG_FOLDER="/var/log/shell-script"
+SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
+
+mkdir -p $LOG_FOLDER # -p for command executed without faile if folder is already created or not 
+echo "script started executed at : $(date)" | tee -a &>>$LOG_FILE # the command "tee -a" that shows on screen and stored also
+
+if [ $USERID -eq 1 ]; then
+   echo " $R ERROR $N : please run this script with root privelege"
+   Exit 1
+fi
+
+VALIDATE () { # functions revive inputs through args just like shell script args
+    if [ $1 -ne 0 ]; then
+       echo -e "installing $2 is  $R failure $N" | tee -a &>>$LOG_FILE
+       Exit 1
+    else 
+       echo -e "installing $2 is SUCCESS $Y skippping $N" | tee -a &>>$LOG_FILE
+       Exit 0
+   fi
+}
+
+dnf list installed mysql &>>$LOG_FILE
+if [ $? -ne 0 ]; then
+   dnf install mysql -y &>>$LOG_FILE
+   VALIDATE $? "mysql"
+else
+   echo -e "mysql already exist $Y skipping $N" | tee -a &>>$LOG_FILE
+fi
+
+dnf list installed nginx &>>$LOG_FILE
+if [ $? -ne 0 ]; then
+   dnf install nginx -y &>>$LOG_FILE
+   VALIDATE $? "nginx"
+else
+   echo -e "nginx already exist $Y skipping $N" | tee -a &>>$LOG_FILE
+fi
