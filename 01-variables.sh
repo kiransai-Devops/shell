@@ -49,7 +49,7 @@
 # echo "all names : ${NAMES[@]}"
 
 # conditions---------
-NUM=$1
+# NUM=$1
 
 # if [ $NUM -lt 20 ]; then
 #    echo "given number $NUM is less then to the 20"
@@ -58,23 +58,23 @@ NUM=$1
 # fi
 
 
-if [ $NUM -lt 20 ]; then
-   echo "given number $NUM is less then to the 20"
-elif [ $NUM -eq 20 ]; then
-   echo "given number $NUM is equal to the 20"
-else
-   echo "given number $NUM is greter then to the 20"
-fi
-
-
-# echo "enter number:"
-# read NUMBER
-
-# if [ $(($NUMBER % 2)) -eq 0 ]; then
-#    echo "given number $NUMBER is EVEN"
+# if [ $NUM -lt 20 ]; then
+#    echo "given number $NUM is less then to the 20"
+# elif [ $NUM -eq 20 ]; then
+#    echo "given number $NUM is equal to the 20"
 # else
-#    echo "given number $NUMBER is ODD"
+#    echo "given number $NUM is greter then to the 20"
 # fi
+
+
+echo "enter number:"
+read NUMBER
+
+if [ $(($NUMBER % 2)) -eq 0 ]; then
+   echo "given number $NUMBER is EVEN"
+else
+   echo "given number $NUMBER is ODD"
+fi
 
 
 # USERID=$(id -u)
