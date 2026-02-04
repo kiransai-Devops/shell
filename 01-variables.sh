@@ -51,20 +51,20 @@
 # conditions---------
 NUM=$1
 
-# if [ $NUM -lt 20 ]; then
-#    echo "given number $NUM is less then to the 20"
-# else
-#    echo "given number $NUM is greter then to the 20"
-# fi
-
-
 if [ $NUM -lt 20 ]; then
    echo "given number $NUM is less then to the 20"
-elif 
-   echo "given number $NUM is equal to the 20"
 else
    echo "given number $NUM is greter then to the 20"
 fi
+
+
+# if [ $NUM -lt 20 ]; then
+#    echo "given number $NUM is less then to the 20"
+# elif [ $NUM -eq 20 ]; then
+#    echo "given number $NUM is equal to the 20"
+# else
+#    echo "given number $NUM is greter then to the 20"
+# fi
 
 
 # echo "enter number:"
