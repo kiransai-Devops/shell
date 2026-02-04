@@ -77,24 +77,6 @@
 # fi
 
 
-USERID=$(id -u)
-
-if [ $USERID -eq 1 ]; then
-   echo "ERROR: please run this script with root privelege"
-   Exit 1
-fi
-
-dnf install mysql -y
-
-if [ $? -ne 0 ]; then
-   echo "ERROR: installing mysql is failure"
-   Exit 1
-else 
-   echo "installing mysql is SUCCESS"
-fi
-
-# functions----------
-
 # USERID=$(id -u)
 
 # if [ $USERID -eq 1 ]; then
@@ -102,20 +84,38 @@ fi
 #    Exit 1
 # fi
 
-# VALIDATE () { # functions revive inputs through args just like shell script args
-#     if [ $1 -ne 0 ]; then
-#        echo "ERROR: installing $2 is failure"
-#        Exit 1
-#     else 
-#        echo "installing $2 is SUCCESS"
-#    fi
-# }
-
 # dnf install mysql -y
-# VALIDATE $? "mysql"
 
-# dnf install nginx -y
-# VALIDATE $? "nginx"
+# if [ $? -ne 0 ]; then
+#    echo "ERROR: installing mysql is failure"
+#    Exit 1
+# else 
+#    echo "installing mysql is SUCCESS"
+# fi
+
+# functions----------
+
+USERID=$(id -u)
+
+if [ $USERID -eq 1 ]; then
+   echo "ERROR: please run this script with root privelege"
+   Exit 1
+fi
+
+VALIDATE () { # functions revive inputs through args just like shell script args
+    if [ $1 -ne 0 ]; then
+       echo "ERROR: installing $2 is failure"
+       Exit 1
+    else 
+       echo "installing $2 is SUCCESS"
+   fi
+}
+
+dnf install mysql -y
+VALIDATE $? "mysql"
+
+dnf install nginx -y
+VALIDATE $? "nginx"
 
 # colours--------
 
