@@ -67,32 +67,32 @@
 # fi
 
 
-echo "enter number:"
-read NUMBER
+# echo "enter number:"
+# read NUMBER
 
-if [ $(($NUMBER % 2)) -eq 0 ]; then
-   echo "given number $NUMBER is EVEN"
-else
-   echo "given number $NUMBER is ODD"
+# if [ $(($NUMBER % 2)) -eq 0 ]; then
+#    echo "given number $NUMBER is EVEN"
+# else
+#    echo "given number $NUMBER is ODD"
+# fi
+
+
+USERID=$(id -u)
+
+if [ $USERID -eq 1 ]; then
+   echo "ERROR: please run this script with root privelege"
+   Exit 1
 fi
 
+dnf install mysql -y
 
-# USERID=$(id -u)
-
-# if [ $USERID -eq 1 ]; then
-#    echo "ERROR: please run this script with root privelege"
-#    Exit 1
-# fi
-
-# dnf install mysql -y
-
-# if [ $? -ne 0 ]; then
-#    echo "ERROR: installing mysql is failure"
-#    Exit 1
-# else 
-#    echo "installing mysql is SUCCESS"
-#    Exit 0
-# fi
+if [ $? -ne 0 ]; then
+   echo "ERROR: installing mysql is failure"
+   Exit 1
+else 
+   echo "installing mysql is SUCCESS"
+   Exit 0
+fi
 
 # functions----------
 
