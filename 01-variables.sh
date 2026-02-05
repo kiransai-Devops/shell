@@ -171,13 +171,13 @@ echo "script started executed at : $(date)"  | tee -a $LOG_FILE # the command "t
 
 if [ $USERID -eq 1 ]; then
    echo " $R ERROR $N : please run this script with root privelege" 
-   Exit 1
+   exit 1
 fi
 
 VALIDATE () { # functions revive inputs through args just like shell script args
     if [ $1 -ne 0 ]; then
        echo -e "installing $2 is  $R failure $N" | tee -a $LOG_FILE
-       Exit 1
+       exit 1
    else 
        echo -e "installing $2 is $B SUCCESS  $N" | tee -a $LOG_FILE
    fi
