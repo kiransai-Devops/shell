@@ -197,3 +197,7 @@ if [ $? -ne 0 ]; then
 else
    echo -e "nginx already exist $Y skipping $N" | tee -a &>>$LOG_FILE
 fi
+
+
+
+
