@@ -159,6 +159,7 @@
 USERID=$(id -u)
 R="\e[31m"
 Y="\e[33m"
+B="\e[34m"
 N="\e[0m"
 
 LOG_FOLDER="/var/log/shell-script"
@@ -178,7 +179,7 @@ VALIDATE () { # functions revive inputs through args just like shell script args
        echo -e "installing $2 is  $R failure $N" 
        Exit 1
     else 
-       echo -e "installing $2 is SUCCESS $Y skippping $N" 
+       echo -e "installing $2 is $B SUCCESS  $N" 
    fi
 }
 
