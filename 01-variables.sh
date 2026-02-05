@@ -166,7 +166,7 @@ SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOG_FOLDER # -p for command executed without faile if folder is already created or not 
-echo "script started executed at : $(date)" | tee -a &>>$LOG_FILE # the command "tee -a" that shows on screen and stored also
+echo "script started executed at : $(date)"  # the command "tee -a" that shows on screen and stored also
 
 if [ $USERID -eq 1 ]; then
    echo " $R ERROR $N : please run this script with root privelege"
@@ -175,10 +175,10 @@ fi
 
 VALIDATE () { # functions revive inputs through args just like shell script args
     if [ $1 -ne 0 ]; then
-       echo -e "installing $2 is  $R failure $N" | tee -a &>>$LOG_FILE
+       echo -e "installing $2 is  $R failure $N" 
        Exit 1
     else 
-       echo -e "installing $2 is SUCCESS $Y skippping $N" | tee -a &>>$LOG_FILE
+       echo -e "installing $2 is SUCCESS $Y skippping $N" 
    fi
 }
 
@@ -187,7 +187,7 @@ if [ $? -ne 0 ]; then
    dnf install mysql -y &>>$LOG_FILE
    VALIDATE $? "mysql"
 else
-   echo -e "mysql already exist $Y skipping $N" | tee -a &>>$LOG_FILE
+   echo -e "mysql already exist $Y skipping $N" 
 fi
 
 dnf list installed nginx &>>$LOG_FILE
@@ -195,7 +195,7 @@ if [ $? -ne 0 ]; then
    dnf install nginx -y &>>$LOG_FILE
    VALIDATE $? "nginx"
 else
-   echo -e "nginx already exist $Y skipping $N" | tee -a &>>$LOG_FILE
+   echo -e "nginx already exist $Y skipping $N" 
 fi
 
 
