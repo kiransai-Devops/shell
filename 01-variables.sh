@@ -169,13 +169,13 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOG_FOLDER # -p for command executed without faile if folder is already created or not 
 echo "script started executed at : $(date)"  | tee -a $LOG_FILE # the command "tee -a" that shows on screen and stored also
 
-if [ $USERID -ne 0 ]; then
+if [ $USERID -eq 1 ]; then
     echo " ERROR : please run this script with root privelege" 
     exit 1
 fi
 
 VALIDATE () { # functions revive inputs through args just like shell script args
-    if [ $1 -eq 1 ]; then
+    if [ $1 -ne 0 ]; then
         echo -e "installing $2 is  $R failure $N" | tee -a $LOG_FILE
         exit 1
    else 
@@ -184,7 +184,7 @@ VALIDATE () { # functions revive inputs through args just like shell script args
 }
 
 dnf list installed mysql &>>$LOG_FILE
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "mysql"
 else
@@ -192,7 +192,7 @@ else
 fi
 
 dnf list installed nginx &>>$LOG_FILE
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "nginx"
 else
